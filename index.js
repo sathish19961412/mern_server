@@ -66,6 +66,14 @@ app.delete('/deleteUser/:id',(req,res)=>{
 
 })
 
+app.post('/createProducts',(req,res)=>{
+
+    ProductModel.create(req.body)
+    .then(products=>res.json(products))
+    .catch(err=>res.json(err))
+
+})
+
 app.listen(3001,()=>{
     console.log('Server is Running port number is 3001')
 })
