@@ -73,7 +73,21 @@ app.post('/createProducts',(req,res)=>{
     .catch(err=>res.json(err))
 
 })
+app.get('/displayProducts',(req,res)=>{
+    ProductModel.find({})
+    .then(products=>res.json(products))
+    .catch(err=>res.json(err))
+})
 
+//Edit Data
+app.get('/displayProducts/:id',(req,res)=>{
+
+    const id =req.params.id;
+ 
+    ProductModel.findById({_id:id})
+    .then(products=>res.json(products))
+    .catch(err=>res.json(err))
+ })
 app.listen(3001,()=>{
     console.log('Server is Running port number is 3001')
 })
